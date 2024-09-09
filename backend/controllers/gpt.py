@@ -19,4 +19,4 @@ completion = client.chat.completions.create(
     ]
 )
 
-print(completion.choices[0].message)    
+print(completion.choices[0].message)
