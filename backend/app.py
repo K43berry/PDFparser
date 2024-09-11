@@ -4,11 +4,13 @@ from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 from flask_cors import CORS
 
-from routes import routes_blueprint
+from blueprints.service import service_bp
+from blueprints.user import user_bp
 from models import db
 
 load_dotenv()
 
+#=============================#
 app = Flask(__name__)
 CORS(app)
 
@@ -19,7 +21,16 @@ db.init_app(app)
 with app.app_context():
     db.create_all()
 
-app.register_blueprint(routes_blueprint)
+#=============================#
+
+#BLUEPRINTS
+app.register_blueprint(service_bp)
+app.register_blueprint(user_bp)
+
+
+#=============================#
 
 if __name__ == "__main__":
     app.run(debug = True, port=8080)
+
+#=============================#
